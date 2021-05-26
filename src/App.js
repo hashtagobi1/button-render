@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Inputs from './components/Inputs';
+import React, { useState, useEffect } from 'react'
 
 function App() {
+  const [clicks, setClicks] = useState([])
+
+  const clickButton = () => {
+
+    setClicks(prevArray => [...prevArray, 'newClick'])
+    console.log(clicks)
+
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>Add new input fields</h1>
+
+      {clicks.map((click, i) => {
+        return (
+          <Inputs key={i}/>
+        )
+      }) }
+      <button onClick={clickButton}>Add More!</button>
+
     </div>
   );
 }
